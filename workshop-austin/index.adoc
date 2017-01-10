@@ -73,48 +73,13 @@ ssid: `TBD`
 .Today's Team
 ****
 [.lead]
-Gerald Dykeman - Domain Architect - Ansible
-
-Gerald joined Red Hat in August 2016 as a Domain Architect.  His focus is on all things Ansible Core and Tower as well
-as specializing in Ansible's network automation capabilities.
-Gerald has a networking background, previously working with a range of solutions from Small Business to
-Service Provider.  In the last couple years before joining Red Hat, he focused on using Ansible to automate OpenStack solutions.
+Jamie Duncan - Cloud Architect
 
 [.lead]
-Bill Hirsch - Solutions Architect
-
-Bill is a Solutions Architect with Red Hat focused on Northeast public sector accounts.  As an account SA, he is responsible for all Red Hat offerings,
-but has a passion for Ansible.  He has a background in Linux/Unix systems administration, management, and prior to joining Red Hat served as a Director
-of Infrastructure at the University of Pittsburgh Medical Center.
-Bill lives in Pittsburgh with his wife, 3 boys, and ever-shedding pets.
+John Hoffer - Cloud Architect
 
 [.lead]
-Skip Paul - Manager, Solution Architecture
-
-Skip Paul is a Solution Architecture Manager within Red Hat's North East region. Based in Newton, MA, he leads a team of architects, assigned to
-Red Hat's top accounts, tasked with coordinating efforts between sales, engineering and support to build and communicate enterprise level
-Open Source solutions.
-
-In his role, Skip also manages Red Hat User Groups within the North East and has presented at events such as Linuxworld and Brainshare.
-He holds a Bachelors of Science Degree, with a dual concentration in Information Systems and Marketing, from the Carroll School of Management at Boston College
-and enjoys Windsurfing, Surfing, Skiing and English Pointers.
-
-[.lead]
-Nate Salemme - Solutions Architect
-
-Nate is a Solution Architect working with strategic and enterprise commercial customers across the northeast.
-His background includes Systems Engineering and Solution Architecture and currently resides just outside Boston with his wife, son and annoying rescue dog.
-
-[.lead]
-Matt St. Onge - Solutions Architect
-
-Matt joined the Red Hat family mid 2015, having previously run Red Hat practices with a few channel partners and having owned a consulting company
-that itself was a Red Hat ISV partner. With over 20 years of Linux & UNIX experience, Matt has been deeply involved in the ever-changing world of Linux.
-Ansible, OpenStack and hybrid cloud are some of his greatest passions.
-
-Matt's experience and training also go further than just Linux solutions; he also holds numerous virtualization, storage and ITIL certifications
-in addition to his Red Hat credentials. When Matt's not architecting Clouds, he can be found kayaking, hiking or horribly slicing golf balls down the fairway...
-
+Justin Burdine - Cloud Architect
 
 ****
 == Document Copyright
