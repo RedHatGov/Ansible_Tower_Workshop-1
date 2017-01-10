@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Ansible Workshops latest | Workshop | Exercise 1.0</title>
+  <title>Ansible Workshops latest | Workshop | Agenda</title>
   <link href="https://assets.openshift.net/content/subdomain.css" rel="stylesheet" type="text/css">
   <link href="../../latest/_stylesheets/docs.css" rel="stylesheet" />
   <link href="https://www.ansible.com/hs-fs/hub/330046/file-448313641-png/favicon.png" rel="apple-touch-icon-precomposed" type="image/png">
@@ -151,14 +151,14 @@
         <a href="../../index.html">Ansible</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../workshop-austin/index.html">Ansible Workshops latest</a>
+        <a href="../workshop/index.html">Ansible Workshops latest</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../workshop-austin/index.html">Workshop</a>
+        <a href="../workshop/index.html">Workshop</a>
       </li>
       
       <li class="hidden-xs active">
-        Exercise 1.0
+        Agenda
       </li>
     </ol>
     <div class="row row-offcanvas row-offcanvas-left">
@@ -183,15 +183,15 @@
         <span id="tgSpan0" class="fa fa-angle-down"></span>Workshop
       </a>
       <ul id="topicGroup0" class="collapse in list-unstyled">
-            <li><a class="" href="../workshop-austin/index.html">Agenda</a></li>
-            <li><a class="" href="../workshop-austin/setup.html">Setup</a></li>
-            <li><a class=" active" href="../workshop-austin/exercise1.0.html">Exercise 1.0</a></li>
-            <li><a class="" href="../workshop-austin/exercise1.1.html">Exercise 1.1</a></li>
-            <li><a class="" href="../workshop-austin/exercise1.2.html">Exercise 1.2</a></li>
-            <li><a class="" href="../workshop-austin/exercise1.3.html">Exercise 1.3</a></li>
-            <li><a class="" href="../workshop-austin/exercise1.4.html">Exercise 1.4</a></li>
-            <li><a class="" href="../workshop-austin/exercise1.5.html">Exercise 1.5</a></li>
-            <li><a class="" href="../workshop-austin/wrapup.html">Wrap Up</a></li>
+            <li><a class=" active" href="../workshop/index.html">Agenda</a></li>
+            <li><a class="" href="../workshop/setup.html">Setup</a></li>
+            <li><a class="" href="../workshop/exercise1.0.html">Exercise 1.0</a></li>
+            <li><a class="" href="../workshop/exercise1.1.html">Exercise 1.1</a></li>
+            <li><a class="" href="../workshop/exercise1.2.html">Exercise 1.2</a></li>
+            <li><a class="" href="../workshop/exercise1.3.html">Exercise 1.3</a></li>
+            <li><a class="" href="../workshop/exercise1.4.html">Exercise 1.4</a></li>
+            <li><a class="" href="../workshop/exercise1.5.html">Exercise 1.5</a></li>
+            <li><a class="" href="../workshop/wrapup.html">Wrap Up</a></li>
       </ul>
     </li>
     <li class="nav-header">
@@ -206,103 +206,140 @@
       </div>
       <div class="col-xs-12 col-sm-9 col-md-9 main">
         <div class="page-header">
-          <h2>Exercise 1.0 - Running Ad-hoc commands</h2>
+          <h2>Automation for Everyone</h2>
         </div>
-        <hr>
+        <div id="preamble">
+<div class="sectionbody">
+<hr>
 <div class="sidebarblock">
 <div class="content">
-<div class="paragraph">
-<p>For our first exercise, we are going to run some ad-hoc commands to help you get
-a feel for how Ansible works.  Ansible Ad-Hoc commands enable you to perform tasks
-on remote nodes without having to write a playbook.  They are very useful when you
-simply need to do one or two things quickly and often, to many remote nodes.</p>
+<div class="title">Before We Get Started</div>
+<div class="paragraph lead">
+<p>Overview</p>
 </div>
-<div class="admonitionblock note">
+<div class="paragraph">
+<p>Today is meant for anyone who has any exposure to Ansible, whether you have used it or not. We are going to start with a short overview (yes, slideware) and then we&#8217;ll get into the lab as soon as possible. That is where we will spend most of our time.</p>
+</div>
+<div class="paragraph lead">
+<p>Your Responsibilities</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Have a discussion. This will be boring if it&#8217;s just us up here talking for over 4 hours.</p>
+</li>
+<li>
+<p>Participate. We are going to cut you loose with Ansible here in just a little while. Have questions. Have opinions.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Hopefully you have your laptop with you. If not, please find a shoulder-surfing buddy. See? Not only can we dig into Ansible but you can make a new friend!</p>
+</div>
+<div class="paragraph lead">
+<p>Conventions Used in This Document</p>
+</div>
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>Like many Linux commands, <code><code>ansible</code></code> allows for long-form options as well as short-form.  For example:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>ansible --module-name ping</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>is the same as running</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>ansible -m ping</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>We are going to be using the short-form options throughout this workshop</p>
-</div>
+<div class="title">Whenever you see a section like this, please pay close attention.  We are leading you through a process.</div>
+
 </td>
 </tr>
 </table>
 </div>
-<hr>
-<div class="paragraph">
-<p><strong>Step 1:</strong> Let&#8217;s start with something really basic - pinging a host.  The <code><code>ping</code></code> module makes sure our web hosts are responsive.</p>
-</div>
-<div class="listingblock">
+<div class="exampleblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">ansible -m ping web</code></pre>
-</div>
-</div>
 <div class="paragraph">
-<p><strong>Step 2:</strong>  Now let&#8217;s see how we can run a good ol' fashioned Linux command and format the output using the <code><code>command</code></code> module.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">ansible -m command -a &quot;uptime&quot; web -o</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Step 3:</strong> Take a look at your web node&#8217;s configuration.  The <code><code>setup</code></code> module displays ansible facts (and a lot of them) about an endpoint.</p>
+<p>Step 1: Run this command to do something or other</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">ansible web -m setup</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p><strong>Step 4:</strong> Now, let&#8217;s install Apache using the <code><code>yum</code></code> module</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 2: Edit this file in this specific way</p>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">ansible web -m yum -a &quot;name=httpd state=present&quot; -b</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">---
+ - hosts: web
+   name: This is a play within a playbook
+   become: yes
+   vars:
+     httpd_packages:
+       - httpd
+       - mod_wsgi</code></pre>
 </div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Do not cut and paste text from this document.  We really want you to learn ansible during this workshop,
+and part of that experience is typing out YAML and understanding it&#8217;s syntax, spacing, and alignments.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph lead">
+<p>Location-Specific Information</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">WiFi Access</div>
+<div class="paragraph">
+<p>ssid: <code>TBD</code></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Today&#8217;s Team</div>
+<div class="paragraph lead">
+<p>Jamie Duncan - Cloud Architect</p>
+</div>
+<div class="paragraph lead">
+<p>John Hoffer - Cloud Architect</p>
+</div>
+<div class="paragraph lead">
+<p>Justin Burdine - Cloud Architect</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="document-copyright"><a class="anchor" href="#document-copyright"></a>Document Copyright</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document was created by and for Red Hat, Inc. It is being released under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons License 4.0</a>. You are free to re-use it in whole or in part.</p>
 </div>
 <div class="paragraph">
-<p><strong>Step 5:</strong> OK, Apache is installed now so let&#8217;s start it up using the <code><code>service</code></code> module</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">ansible web -m service -a &quot;name=httpd state=started&quot; -b</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Step 6:</strong> Finally, let&#8217;s clean up after ourselves.  First, stop the httpd service</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">ansible web -m service -a &quot;name=httpd state=stopped&quot; -b</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Step 7:</strong> Next, remove the Apache package</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">ansible web -m yum -a &quot;name=httpd state=absent&quot; -b</code></pre>
-</div>
+<p>You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.</p>
 </div>
 </div>
 </div>

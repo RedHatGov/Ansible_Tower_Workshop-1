@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Ansible Workshops latest | Workshop | Agenda</title>
+  <title>Ansible Workshops latest | Workshop | Exercise 1.1</title>
   <link href="https://assets.openshift.net/content/subdomain.css" rel="stylesheet" type="text/css">
   <link href="../../latest/_stylesheets/docs.css" rel="stylesheet" />
   <link href="https://www.ansible.com/hs-fs/hub/330046/file-448313641-png/favicon.png" rel="apple-touch-icon-precomposed" type="image/png">
@@ -151,14 +151,14 @@
         <a href="../../index.html">Ansible</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../workshop-austin/index.html">Ansible Workshops latest</a>
+        <a href="../workshop/index.html">Ansible Workshops latest</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../workshop-austin/index.html">Workshop</a>
+        <a href="../workshop/index.html">Workshop</a>
       </li>
       
       <li class="hidden-xs active">
-        Agenda
+        Exercise 1.1
       </li>
     </ol>
     <div class="row row-offcanvas row-offcanvas-left">
@@ -183,15 +183,15 @@
         <span id="tgSpan0" class="fa fa-angle-down"></span>Workshop
       </a>
       <ul id="topicGroup0" class="collapse in list-unstyled">
-            <li><a class=" active" href="../workshop-austin/index.html">Agenda</a></li>
-            <li><a class="" href="../workshop-austin/setup.html">Setup</a></li>
-            <li><a class="" href="../workshop-austin/exercise1.0.html">Exercise 1.0</a></li>
-            <li><a class="" href="../workshop-austin/exercise1.1.html">Exercise 1.1</a></li>
-            <li><a class="" href="../workshop-austin/exercise1.2.html">Exercise 1.2</a></li>
-            <li><a class="" href="../workshop-austin/exercise1.3.html">Exercise 1.3</a></li>
-            <li><a class="" href="../workshop-austin/exercise1.4.html">Exercise 1.4</a></li>
-            <li><a class="" href="../workshop-austin/exercise1.5.html">Exercise 1.5</a></li>
-            <li><a class="" href="../workshop-austin/wrapup.html">Wrap Up</a></li>
+            <li><a class="" href="../workshop/index.html">Agenda</a></li>
+            <li><a class="" href="../workshop/setup.html">Setup</a></li>
+            <li><a class="" href="../workshop/exercise1.0.html">Exercise 1.0</a></li>
+            <li><a class=" active" href="../workshop/exercise1.1.html">Exercise 1.1</a></li>
+            <li><a class="" href="../workshop/exercise1.2.html">Exercise 1.2</a></li>
+            <li><a class="" href="../workshop/exercise1.3.html">Exercise 1.3</a></li>
+            <li><a class="" href="../workshop/exercise1.4.html">Exercise 1.4</a></li>
+            <li><a class="" href="../workshop/exercise1.5.html">Exercise 1.5</a></li>
+            <li><a class="" href="../workshop/wrapup.html">Wrap Up</a></li>
       </ul>
     </li>
     <li class="nav-header">
@@ -206,140 +206,211 @@
       </div>
       <div class="col-xs-12 col-sm-9 col-md-9 main">
         <div class="page-header">
-          <h2>Automation for Everyone</h2>
+          <h2>Exercise 1.1 - Writing Your First playbook</h2>
         </div>
-        <div id="preamble">
-<div class="sectionbody">
-<hr>
+        <hr>
 <div class="sidebarblock">
 <div class="content">
-<div class="title">Before We Get Started</div>
-<div class="paragraph lead">
-<p>Overview</p>
+<div class="paragraph">
+<p>Now that you&#8217;ve gotten a sense of how ansible works, we are going to write our first
+ansible <strong>playbook</strong>.  The playbook is where you can take some of those ad-hoc commands you just ran
+and put them into a repeatable set of <strong>plays</strong> and <strong>tasks</strong>.</p>
 </div>
 <div class="paragraph">
-<p>Today is meant for anyone who has any exposure to Ansible, whether you have used it or not. We are going to start with a short overview (yes, slideware) and then we&#8217;ll get into the lab as soon as possible. That is where we will spend most of our time.</p>
-</div>
-<div class="paragraph lead">
-<p>Your Responsibilities</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Have a discussion. This will be boring if it&#8217;s just us up here talking for over 4 hours.</p>
-</li>
-<li>
-<p>Participate. We are going to cut you loose with Ansible here in just a little while. Have questions. Have opinions.</p>
-</li>
-</ul>
+<p>A playbook can have multiple plays and a play
+can have one or multiple tasks.  The goal of a <strong>play</strong> is to map a group of hosts.  The goal of a <strong>task</strong> is to implement modules against those hosts.</p>
 </div>
 <div class="paragraph">
-<p>Hopefully you have your laptop with you. If not, please find a shoulder-surfing buddy. See? Not only can we dig into Ansible but you can make a new friend!</p>
+<p>For our first playbook, we are only going to write one play and two tasks.</p>
 </div>
 <div class="paragraph lead">
-<p>Conventions Used in This Document</p>
+<p>Section 1 - Creating a Directory Structure and Files for your Playbook</p>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-<div class="title">Whenever you see a section like this, please pay close attention.  We are leading you through a process.</div>
-
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>There is a <a href="http://docs.ansible.com/ansible/playbooks_best_practices.html">best practice</a> on the preferred directory structures for playbooks.  We strongly encourage
+you to read and understand these practices as you develop your Ansible ninja skills.  That said,
+our playbook today is very basic and creating a complex structure will just confuse things.</p>
+</div>
+<div class="paragraph">
+<p>Instead, we are going to create a very simple directory structure for our playbook, and add just a couple of files to it.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Step 1: Run this command to do something or other</p>
+<p>Step 1: Create a directory called <strong>apache_basic</strong> in your home directory and change directories into it</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">ansible web -m setup</code></pre>
+<pre>% mkdir ~/apache_basic
+% cd ~/apache_basic</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Step 2: Define your inventory.  Inventories are crucial to Ansible as they define remote machines on which you wish to run
+your playbook(s).  Use <code><code>vi</code></code> or <code><code>vim</code></code> to create a file called <code><code>hosts</code></code>.  Then, add the appropriate definitions which can
+be viewed in <code><code>~/lighbulb/inventory</code></code>.  (And yes, I <strong>suppose</strong> you could copy the file, but we&#8217;d rather you type it in so you can
+become familiar with the syntax)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[web]
+node-1 ansible_host=&lt;IP Address of your node-1&gt;
+node-2 ansible_host=&lt;IP Address of your node-2&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Step 3: Use <code><code>vi</code></code> or <code><code>vim</code></code> to open a file called <code><code>install_apache.yml</code></code></p>
+</div>
+</div>
+</div>
+<div class="paragraph lead">
+<p>Section 2 - Defining Your Play</p>
+</div>
+<div class="paragraph">
+<p>Now that you are editing <code><code>install_apache.yml</code></code>, let&#8217;s begin by defining the play and then understanding what each line accomplishes</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">---
+- hosts: web
+  name: Install the apache web service
+  become: yes</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Step 2: Edit this file in this specific way</p>
+<p><code><code>---</code></code> Defines the beginning of YAML</p>
+</li>
+<li>
+<p><code><code>hosts: web</code></code> Defines which host group in your inventory on which this play will run against</p>
+</li>
+<li>
+<p><code><code>name: Install the apache web service</code></code> This describes our play</p>
+</li>
+<li>
+<p><code><code>become: yes</code></code> Enables user privilege escalation.  The default is sudo, but su, pbrun, and <a href="http://docs.ansible.com/ansible/become.html#new-command-line-options">several others</a> are also supported.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph lead">
+<p>Section 3: Adding Tasks to Your Play</p>
+</div>
+<div class="paragraph">
+<p>Now that we&#8217;ve defined your play, let&#8217;s add some tasks to get some things done</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">tasks:
+ - name: install apache
+   yum:
+     name: httpd
+     state: present
+
+ - name: start httpd
+   service:
+     name: httpd
+     state: started</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><code>tasks:</code></code> This denotes that one or more tasks are about to be defined</p>
+</li>
+<li>
+<p><code><code>- name:</code></code> Each task requires a name which will print to standard output when you run your playbook.
+Therefore, give your tasks a name that is short, sweet, and to the point</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="text">yum:
+  name: httpd
+  state: present</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>These three lines are calling the Ansible module <strong>yum</strong> to install httpd.
+<a href="http://docs.ansible.com/ansible/yum_module.html">Click here</a> to see all options for the yum module.</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="text">service:
+  name: httpd
+  state: started</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The next few lines are using the ansible module <strong>service</strong> to start the httpd service.  The service module
+is the preferred way of controlling services on remote hosts.  <a href="http://docs.ansible.com/ansible/service_module.html">Click here</a> to learn more
+about the <strong>service</strong> module.</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="paragraph lead">
+<p>Section 4: Saving your Playbook</p>
+</div>
+<div class="paragraph">
+<p>Now that you&#8217;ve completed writing your playbook, it would be a shame not to keep it.</p>
+</div>
+<div class="paragraph">
+<p>Use the <code><code>write/quit</code></code> method in <code><code>vi</code></code> or <code><code>vim</code></code> to save your playbook, i.e. <code><code>Esc :wq!</code></code></p>
+</div>
+<div class="paragraph">
+<p>And that should do it.  You should now have a fully written playbook called <code><code>install_apache.yml</code></code>.
+You are ready to automate!</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Ansible (well, YAML really) can be a bit particular about formatting especially around indentation/spacing.  When you all get back to the office,
+read up on this <a href="http://docs.ansible.com/ansible/YAMLSyntax.html">YAML Syntax</a> a bit more and it will save you some headaches later.  In the meantime, your completed playbook should look
+like this.  Take note of the spacing and alignment.
+</td>
+</tr>
+</table>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">---
- - hosts: web
-   name: This is a play within a playbook
-   become: yes
-   vars:
-     httpd_packages:
-       - httpd
-       - mod_wsgi</code></pre>
+- hosts: web
+  name: Install the apache web service
+  become: yes
+
+  tasks:
+    - name: install apache
+      yum:
+        name: httpd
+        state: present
+
+    - name: start httpd
+      service:
+        name: httpd
+        state: started</code></pre>
 </div>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Do not cut and paste text from this document.  We really want you to learn ansible during this workshop,
-and part of that experience is typing out YAML and understanding it&#8217;s syntax, spacing, and alignments.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="paragraph lead">
-<p>Location-Specific Information</p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="title">WiFi Access</div>
-<div class="paragraph">
-<p>ssid: <code>TBD</code></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Today&#8217;s Team</div>
-<div class="paragraph lead">
-<p>Jamie Duncan - Cloud Architect</p>
-</div>
-<div class="paragraph lead">
-<p>John Hoffer - Cloud Architect</p>
-</div>
-<div class="paragraph lead">
-<p>Justin Burdine - Cloud Architect</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="document-copyright"><a class="anchor" href="#document-copyright"></a>Document Copyright</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This document was created by and for Red Hat, Inc. It is being released under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons License 4.0</a>. You are free to re-use it in whole or in part.</p>
-</div>
-<div class="paragraph">
-<p>You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.</p>
 </div>
 </div>
 </div>

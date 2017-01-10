@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Ansible Workshops latest | Workshop | Setup</title>
+  <title>Ansible Workshops latest | Workshop | Exercise 1.0</title>
   <link href="https://assets.openshift.net/content/subdomain.css" rel="stylesheet" type="text/css">
   <link href="../../latest/_stylesheets/docs.css" rel="stylesheet" />
   <link href="https://www.ansible.com/hs-fs/hub/330046/file-448313641-png/favicon.png" rel="apple-touch-icon-precomposed" type="image/png">
@@ -151,14 +151,14 @@
         <a href="../../index.html">Ansible</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../workshop-austin/index.html">Ansible Workshops latest</a>
+        <a href="../workshop/index.html">Ansible Workshops latest</a>
       </li>
       <li class="hidden-xs active">
-        <a href="../workshop-austin/index.html">Workshop</a>
+        <a href="../workshop/index.html">Workshop</a>
       </li>
       
       <li class="hidden-xs active">
-        Setup
+        Exercise 1.0
       </li>
     </ol>
     <div class="row row-offcanvas row-offcanvas-left">
@@ -183,15 +183,15 @@
         <span id="tgSpan0" class="fa fa-angle-down"></span>Workshop
       </a>
       <ul id="topicGroup0" class="collapse in list-unstyled">
-            <li><a class="" href="../workshop-austin/index.html">Agenda</a></li>
-            <li><a class=" active" href="../workshop-austin/setup.html">Setup</a></li>
-            <li><a class="" href="../workshop-austin/exercise1.0.html">Exercise 1.0</a></li>
-            <li><a class="" href="../workshop-austin/exercise1.1.html">Exercise 1.1</a></li>
-            <li><a class="" href="../workshop-austin/exercise1.2.html">Exercise 1.2</a></li>
-            <li><a class="" href="../workshop-austin/exercise1.3.html">Exercise 1.3</a></li>
-            <li><a class="" href="../workshop-austin/exercise1.4.html">Exercise 1.4</a></li>
-            <li><a class="" href="../workshop-austin/exercise1.5.html">Exercise 1.5</a></li>
-            <li><a class="" href="../workshop-austin/wrapup.html">Wrap Up</a></li>
+            <li><a class="" href="../workshop/index.html">Agenda</a></li>
+            <li><a class="" href="../workshop/setup.html">Setup</a></li>
+            <li><a class=" active" href="../workshop/exercise1.0.html">Exercise 1.0</a></li>
+            <li><a class="" href="../workshop/exercise1.1.html">Exercise 1.1</a></li>
+            <li><a class="" href="../workshop/exercise1.2.html">Exercise 1.2</a></li>
+            <li><a class="" href="../workshop/exercise1.3.html">Exercise 1.3</a></li>
+            <li><a class="" href="../workshop/exercise1.4.html">Exercise 1.4</a></li>
+            <li><a class="" href="../workshop/exercise1.5.html">Exercise 1.5</a></li>
+            <li><a class="" href="../workshop/wrapup.html">Wrap Up</a></li>
       </ul>
     </li>
     <li class="nav-header">
@@ -206,68 +206,16 @@
       </div>
       <div class="col-xs-12 col-sm-9 col-md-9 main">
         <div class="page-header">
-          <h2>Workshop Lab Setup</h2>
+          <h2>Exercise 1.0 - Running Ad-hoc commands</h2>
         </div>
         <hr>
 <div class="sidebarblock">
 <div class="content">
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Today&#8217;s workshop infrastructure is being run in Amazon EC2.<br>
-Each of you should have received a printout when you arrived today.  It has the following information on it.<br>
-- <strong>EC2 username/password</strong><br>
-- <strong>IP Addresses for each of your EC2 instances</strong><br>
-If you didn&#8217;t get one of these printouts, let us know so we can give you one.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="paragraph lead">
-<p>Workshop Infrastructure</p>
-</div>
 <div class="paragraph">
-<p>Each student&#8217;s personal EC2 lab is equipped with the following:</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>(1) Control node (to run ansible plays and install Ansible Tower).</p>
-</li>
-<li>
-<p>(2) Endpoint nodes (to execute ansible playbooks upon).</p>
-<div class="ulist">
-<ul>
-<li>
-<p><em>All three of the afore mentioned nodes are running Red Hat Enterprise Linux 7.2</em></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Ansible Core 2.2</p>
-</li>
-<li>
-<p>Ansible Tower 3.0.3</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Before we can begin doing super-cool automations and such, we&#8217;ve got to get a few basics out of the way.
-Namely&#8230;&#8203; ssh access to your EC2 nodes.</p>
-</div>
-<div class="paragraph lead">
-<p>Testing your environment</p>
+<p>For our first exercise, we are going to run some ad-hoc commands to help you get
+a feel for how Ansible works.  Ansible Ad-Hoc commands enable you to perform tasks
+on remote nodes without having to write a playbook.  They are very useful when you
+simply need to do one or two things quickly and often, to many remote nodes.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -276,48 +224,87 @@ Namely&#8230;&#8203; ssh access to your EC2 nodes.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="title">Testing your access</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Open a terminal or terminal emulator (like PuTTy)</p>
-</li>
-<li>
-<p>ssh to each one of your EC2 nodes/instances using ssh.</p>
-</li>
-<li>
-<p>ssh &lt;account name&gt;@&lt;IP address of node&gt;</p>
-<div class="ulist">
-<ul>
-<li>
-<p>EXAMPLE: <code><code>ssh bhirsch@52.62.1.8</code></code></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Like many Linux commands, <code><code>ansible</code></code> allows for long-form options as well as short-form.  For example:</p>
 </div>
-</li>
-</ul>
+<div class="listingblock">
+<div class="content">
+<pre>ansible --module-name ping</pre>
 </div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Be sure you can log in to your ec2 instances.  If you can&#8217;t log in start shouting, loudly, and waving your hands!
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph lead">
-<p>End Result</p>
 </div>
 <div class="paragraph">
-<p>At this point, everyone should have logged into each of your 3 nodes.  If you haven&#8217;t, let us know so we can get you fixed up.</p>
+<p>is the same as running</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>ansible -m ping</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We are going to be using the short-form options throughout this workshop</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Step 1:</strong> Let&#8217;s start with something really basic - pinging a host.  The <code><code>ping</code></code> module makes sure our web hosts are responsive.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">ansible -m ping web</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Step 2:</strong>  Now let&#8217;s see how we can run a good ol' fashioned Linux command and format the output using the <code><code>command</code></code> module.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">ansible -m command -a &quot;uptime&quot; web -o</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Step 3:</strong> Take a look at your web node&#8217;s configuration.  The <code><code>setup</code></code> module displays ansible facts (and a lot of them) about an endpoint.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">ansible web -m setup</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Step 4:</strong> Now, let&#8217;s install Apache using the <code><code>yum</code></code> module</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">ansible web -m yum -a &quot;name=httpd state=present&quot; -b</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Step 5:</strong> OK, Apache is installed now so let&#8217;s start it up using the <code><code>service</code></code> module</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">ansible web -m service -a &quot;name=httpd state=started&quot; -b</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Step 6:</strong> Finally, let&#8217;s clean up after ourselves.  First, stop the httpd service</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">ansible web -m service -a &quot;name=httpd state=stopped&quot; -b</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Step 7:</strong> Next, remove the Apache package</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">ansible web -m yum -a &quot;name=httpd state=absent&quot; -b</code></pre>
+</div>
+</div>
+</div>
 </div>
       </div>
     </div>
