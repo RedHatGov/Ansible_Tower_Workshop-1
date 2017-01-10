@@ -1,16 +1,16 @@
 :badges:
 :icons:
-:toc-title: Agenda
-:toc2: left
 :iconsdir: http://people.redhat.com/~jduncan/images/icons
-:imagesdir: http://tower.workshop.redhat-fierce.io/_images
-:date: 26-Oct-2016
-:location: Denver, CO
-:tower_url: https://ansible.tower.redhat-fierce.io
-:toclevels: 3
+:imagesdir: http://tower.workshop.bos.redhatgov.io/_images
+:date: 19-Jan-2017
+:location: Boston, MA
+:tower_url: https://ansible-tower-bos.redhatgov.io
 :source-highlighter: highlight.js
+:source-language: yaml
 
 = Automation for Everyone
+
+---
 
 .Before We Get Started
 ****
@@ -22,26 +22,50 @@ Today is meant for anyone who has any exposure to Ansible, whether you have used
 [.lead]
 Your Responsibilities
 
-* Have a discussion. This will be boring if it's just us up here talking for over 2 hours.
-* Participate. We are going to cut you loose in a live Ansible Tower instance here in just a little while. Have questions. Have opinions.
+* Have a discussion. This will be boring if it's just us up here talking for over 4 hours.
+* Participate. We are going to cut you loose with Ansible here in just a little while. Have questions. Have opinions.
 
 Hopefully you have your laptop with you. If not, please find a shoulder-surfing buddy. See? Not only can we dig into Ansible but you can make a new friend!
 
 [.lead]
 Conventions Used in This Document
 [TIP]
-.Whenever you see a section like this:
+.Whenever you see a section like this, please pay close attention.  We are leading you through a process.
 ====
-* Please pay attention to the steps listed.
-* We are leading you through a procedure, to help you to understand how Ansible Tower functions.
+
 ====
+
+====
+Step 1: Run this command to do something or other
+[source,bash]
+----
+ansible web -m setup
+----
+* Step 2: Edit this file in this specific way
+
+[source,bash]
+----
+---
+ - hosts: web
+   name: This is a play within a playbook
+   become: yes
+   vars:
+     httpd_packages:
+       - httpd
+       - mod_wsgi
+----
+[IMPORTANT]
+Do not cut and paste text from this document.  We really want you to learn ansible during this workshop,
+and part of that experience is typing out YAML and understanding it's syntax, spacing, and alignments.
+====
+
 
 [.lead]
 Location-Specific Information
 [IMPORTANT]
 .WiFi Access
 ====
-ssid: `Foothills Guest`
+ssid: `TBD`
 ====
 ****
 
@@ -49,19 +73,13 @@ ssid: `Foothills Guest`
 .Today's Team
 ****
 [.lead]
-Jonathan Van Meter - Solutions Architect
-
-Jonathan is a virtualization infrastructucture, architecture and design specialist, who has been working with Red Hat Linux since 1999.
+Jamie Duncan - Cloud Architect
 
 [.lead]
-Brad Sollar - Solutions Architect
-
-Brad is a cloud and security specialist, with a background in development.  He has been working with Red Hat Enteprise Linux based solutions since 2007.
+John Hoffer - Cloud Architect
 
 [.lead]
-{empty}J. Alexander Jacocks - Solutions Architect
-
-Alex has been with Red Hat for 6 months, but has been using Red Hat Linux since 1996.  He lives in the (very) rural Eastern Shore of Maryland, and is entirely dedicated to the advancement of UNIX, across the world.
+Justin Burdine - Cloud Architect
 
 ****
 == Document Copyright
@@ -69,9 +87,3 @@ Alex has been with Red Hat for 6 months, but has been using Red Hat Linux since 
 This document was created by and for Red Hat, Inc. It is being released under link:https://creativecommons.org/licenses/by/4.0/[Creative Commons License 4.0]. You are free to re-use it in whole or in part.
 
 You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-
-== Installing Ansible Tower
-image::ansible_tower_logo.png[Ansible]
-=== Infrastructure
-
-For this lab, we will be using Ansible Tower 3.0.2, which is the latest production release. We are running it in an link:https://aws.amazon.com/ec2/instance-types/[`m4.xlarge`] AWS instance.
