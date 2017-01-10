@@ -1,9 +1,0 @@
-== Wrap Up, Q&A, and Free Style
-
-That wraps up what we have planned for today.
-
-What do you think? How can we help you understand Ansible Tower better?
-
-Thank you for your time and participation!
-
-image::redhatlogo.png[]
