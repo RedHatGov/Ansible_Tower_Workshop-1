@@ -3,7 +3,7 @@
 :iconsdir: http://people.redhat.com/~jduncan/images/icons
 :imagesdir: http://tower.workshop.bos.redhatgov.io/_images
 :date: 19-Jan-2017
-:location: Boston, MA
+:location: San Antonio, TX
 :tower_url: https://ansible-tower-bos.redhatgov.io
 :source-highlighter: highlight.js
 :source-language: yaml

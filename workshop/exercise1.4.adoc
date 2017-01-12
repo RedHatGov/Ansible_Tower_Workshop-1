@@ -105,7 +105,7 @@ a source code management (SCM) system supported by Tower, including Git, Subvers
 
 |===
 |NAME |Ansible Workshop Project
-|DESCRIPTION|Boston workshop playbooks
+|DESCRIPTION|San Antonio workshop playbooks
 |ORGANIZATION|Default
 |SCM TYPE|Git
 |SCM URL| https://github.com/jduncan-rva/ansible-lightbulb
@@ -148,7 +148,7 @@ and this is how we are going to add an inventory for this workshop.
 
 |===
 |NAME |Ansible Workshop Inventory
-|DESCRIPTION|Boston workshop hosts
+|DESCRIPTION|San Antonio workshop hosts
 |ORGANIZATION|Default
 |===
 
