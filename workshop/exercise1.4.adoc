@@ -108,7 +108,7 @@ a source code management (SCM) system supported by Tower, including Git, Subvers
 |DESCRIPTION|Boston workshop playbooks
 |ORGANIZATION|Default
 |SCM TYPE|Git
-|SCM URL| https://github.com/gdykeman/ansible-lightbulb
+|SCM URL| https://github.com/jduncan-rva/ansible-lightbulb
 |SCM UPDATE OPTIONS
 a|
 
